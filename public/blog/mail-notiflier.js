@@ -15,23 +15,27 @@ const imap = {
 
 const n = notifier(imap);
 n.on('end', () => n.start()) // session closed
-  .on('mail', function(mail) {
+    .on('mail', function(mail) {
         mail.attachments.forEach( function(item) {
-                console.log(item);
-                //console.log(mail.from[0].address, mail.subject);
-                name = pinyin(item.fileName.split('.')[0],{
-                        style: pinyin.STYLE_FIRST_LETTER
-                }).join('')
-                fs.writeFileSync("./"+name+".zip",item.content);
-                fs.createReadStream("./"+name+".zip")
-                  .pipe(unzip2.Extract({ path: "./"}))
-                  .on('close', function () {
-                        fs.unlink("./"+name+".zip")
-                        fs.rename(item.fileName.split('.')[0],"html/"+name,function(err){
-                                if(err)
-                                console.log(err)
-                        });
-                  });
+            console.log(item);
+            //console.log(mail.from[0].address, mail.subject);
+            name = pinyin(item.fileName.split('.')[0],{
+                    style: pinyin.STYLE_FIRST_LETTER
+            }).join('')
+            fs.writeFileSync("./"+name+".zip",item.content);
+            fs.createReadStream("./"+name+".zip")
+            .pipe(unzip2.Extract({ path: "./"}))
+            .on('close', function () {
+                    fs.unlink("./"+name+".zip")
+                    fs.rename(item.fileName.split('.')[0],"html/"+name,function(err){
+                            if(err)
+                            console.log(err)
+                    });
+            });
+            
+            fs.appendFile('message.txt', name + "\t:\t" + item.fileName.split('.')[0], function (err) {
+                if (err) throw err;                
+            });
         });
-  })
-  .start();
+    })
+    .start();
