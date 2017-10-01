@@ -5,11 +5,12 @@ cd /Users/apple/keys/vsproject/exapp
 
 2. 添加不打算提交的目录和文件
 
-· vi .gitignore 
-· node_modules
-· .gitignore
-· .git
-
+```sh 
+#vi .gitignore 
+node_modules
+.gitignore
+.git
+```
 3. git add -A  #或 VScode 操作：暂存当前目录的改变 
 
 4. git commit -m "first commit"  #或 VScode 操作：提交改变 
