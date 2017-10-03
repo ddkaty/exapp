@@ -8,16 +8,23 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/blog/html/', function(req, res, next) {
-  fs.readdir('public/blog/html/',function (err,files) {
-    if (err) {
-//        return console.error(err);
-      res.send(err);
-    }
-  //  console.log(files);
-    res.render('artlist', { name: 'Tobi' }, function(err, html) {
-      res.send(html);
-    });
-  });
+
+
+  fs.readFile('public/blog/html/bloglist.txt','utf-8',function(err,data){  
+    if(err){  
+        console.error(err);  
+    }  
+    else{  
+      var adata = {}
+      data.split("\n").forEach(function(item){
+        aspl = item.split(",") ;          
+        adata[aspl[0]] = aspl[1] ;          
+      })
+
+      res.render('artlist', {titale:'Ulysses输出归档', alist:adata});
+    }      
+  }); 
+
 });
 
 module.exports = router;
