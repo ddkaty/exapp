@@ -18,3 +18,15 @@ node_modules
 5. git remote add origin https://github.com/ddkaty/exapp.git
 
 6. git push -u origin master
+
+7. 更新操作：
+安全方式：
+```sh 
+git fetch origin master:tmp
+git diff tmp 
+git merge tmp
+```
+快捷方式：
+```sh 
+ git pull origin master
+```
