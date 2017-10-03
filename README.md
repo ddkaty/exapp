@@ -20,6 +20,10 @@ node_modules
 6. git push -u origin master
 
 7. 更新操作：
+远程分支列表
+``` sh
+git branch -r
+```
 安全方式：
 ```sh 
 git fetch origin master:tmp

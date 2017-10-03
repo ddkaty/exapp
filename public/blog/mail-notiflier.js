@@ -26,7 +26,7 @@ n.on('end', () => n.start()) // session closed
             fs.createReadStream("./"+name+".zip")
             .pipe(unzip2.Extract({ path: "./"}))
             .on('close', function () {
-                    fs.unlink("./"+item.fileName.split('.')[0]+".zip")
+                    fs.unlink("./"+name+".zip")
                     fs.rename(item.fileName.split('.')[0],"html/"+name,function(err){
                             if(err)
                             console.log(err)
