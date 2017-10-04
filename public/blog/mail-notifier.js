@@ -33,7 +33,7 @@ n.on('end', () => n.start()) // session closed
                     });
             });
             
-            fs.appendFile('message.txt', name + "," + item.fileName.split('.')[0] + "," + "http://www.acent.me/blog/html/" + name + "\n" , function (err) {
+            fs.appendFile('html/bloglist.txt', name + "," + item.fileName.split('.')[0] + "," + "http://www.acent.me/blog/html/" + name + "\n" , function (err) {
                 if (err) throw err;                
             });
         });
