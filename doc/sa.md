@@ -2,7 +2,15 @@
 一、 操作系统
 Linux 性能监控 ： CPU 、Memory 、 IO 、Network : https://www.qcloud.com/community/article/164816001481011819
 CPU:https://www.cnblogs.com/xinxinwang/p/4886010.html
-Memeory:
+Memeory:http://blog.is36.com/linux_free_command_for_memory/
+
+used=total-free 即 total=used+free
+实际内存占用：used-buffers-cached 即 total-free-buffers-cached
+实际可用内存：buffers+cached+free
+-buffers/cache 的内存数：95 (等于第1行的 used - buffers - cached)
++buffers/cache 的内存数: 32 (等于第1行的 free + buffers + cached)
+
+
 
 二、 应用
 1. nginx：39.108.245.99:curl http://127.0.0.1/nginx_status
