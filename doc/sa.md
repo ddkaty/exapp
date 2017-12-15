@@ -3,12 +3,13 @@
 Linux 性能监控 ： CPU 、Memory 、 IO 、Network : https://www.qcloud.com/community/article/164816001481011819
 CPU:https://www.cnblogs.com/xinxinwang/p/4886010.html
 Memeory:http://blog.is36.com/linux_free_command_for_memory/
+Network:http://www.jianshu.com/p/b9e942f3682c
 
 used=total-free 即 total=used+free
-实际内存占用：used-buffers-cached 即 total-free-buffers-cached
-实际可用内存：buffers+cached+free
--buffers/cache 的内存数：95 (等于第1行的 used - buffers - cached)
-+buffers/cache 的内存数: 32 (等于第1行的 free + buffers + cached)
+实际内存占用：-buffers/cache 的内存数：95 (等于第1行的 used-buffers-cached 即 total-free-buffers-cached )：反映的是被程序实实在在吃掉的内存
+实际可用内存：+buffers/cache 的内存数: 32 (等于第1行的 free + buffers + cached)：反映的是可以挪用的内存总数。
+
+
 
 
 
